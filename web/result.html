@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="../../static/img/2.png">
+  <title>Search</title>
+  <!-- 引入外链css文件 -->
+  <link rel="stylesheet" href="../../static/search.css">
+</head>
+
+<body class="bg">
+<div class="start">
+  <img id="img" src="../../static/img/6.png" width="140" height="110" />
+  <form action="/api/v1/search" method="get" class="form_">
+    <input id="du" name="keyword" placeholder="请输入搜索关键字"><button id="btn" type="submit">点击搜索</button>
+  </form>
+</div>
+<!-- 先隐藏 请求数据时显示-->
+<div id="res" class="">
+  <ul id="res_ul">
+    {{range .}}
+      <li id="li">
+        <a href="">{{ .Title }}</a>
+        <p>{{ .Time }}-{{ .Content }}</p>
+      </li>
+    {{end}}
+    <!-- <li id="li">
+      <a href="">山西 百度百科</a>
+      <p>
+        山西，简称“晋”，中华人民共和国省级行政区，省会太原，位于中国华北，山西界于北纬34°34′-40°44′，东经110°14′-114°33′之间，东与河北为邻，西与陕西相望，南与河南接壤，北与内蒙古毗连，总面积15.67万平方千米。
+      </p>
+    </li> -->
+  </ul>
+</div>
+
+</body>
+
+<!-- 模板遍历 list：对象数组 v：每一项的值  -->
+<script src="../../static/jquery.js"></script>
+<script src="../../static/template-web.js"></script>
+<script>
+  let ipt = document.querySelector('#du')
+  let btn = document.querySelector('#btn')
+  // 检测输入框的内容，一输入就展示到上方(百度的)
+  ipt.oninput = function () {
+    // console.log(this.value)
+    if (this.value.trim() === '') {
+      this.parentNode.classList.remove('search')
+    }
+    this.parentNode.classList.add('search')
+    $('body').removeClass('bg')
+  }
+
+</script>
+
+</html>
