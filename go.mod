@@ -9,3 +9,5 @@ require (
 	github.com/jinzhu/gorm v1.9.11
 	gopkg.in/olivere/elastic.v5 v5.0.82
 )
+
+go 1.13
